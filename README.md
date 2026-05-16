@@ -112,11 +112,3 @@ I can add a GitHub Actions workflow that builds the Docker image and pushes to a
 - If Streamlit fails to start due to port in use, pass `--server.port 8502`.
 - If your Excel file is large, the app may take time to load. For production, switch to preprocessed CSV or a database.
 
-## Next steps I can help with
-
-1. Push this workspace to your GitHub repo from here (I will generate the git commands; I won't push without your confirmation).
-2. Create a Dockerfile in the repo and test-build it locally.
-3. Configure Streamlit Community Cloud deployment and set secrets.
-4. Add a GitHub Actions workflow to auto-deploy on push.
-
-If you'd like, tell me which next step to do and I will proceed.
