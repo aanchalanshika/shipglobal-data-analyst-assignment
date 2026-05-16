@@ -179,11 +179,35 @@ st.markdown(
 
 
 with st.spinner("Loading and cleaning sales data..."):
+    raw_df = None
+    uploaded_file = None
     try:
+        # try loading from repo (useful when file is committed)
         raw_df = load_raw_data(DATA_FILE)
-        df, resolved_columns, cleaning_metrics = clean_sales_data(raw_df)
+    except FileNotFoundError:
+        # deployed instances (Streamlit Cloud) won't have the Excel unless uploaded
+        st.warning("Data file not found in repository. Please upload the dataset or add it to the repo.")
+        uploaded_file = st.file_uploader("Upload Coffee Shop Sales (XLSX or CSV)", type=["xlsx", "csv"])
+        if uploaded_file is None:
+            st.info("Upload the source file to proceed, or deploy with the file available in the repository or cloud storage.")
+            st.stop()
+        # read uploaded file (CSV or Excel)
+        try:
+            if uploaded_file.name.lower().endswith(".csv"):
+                raw_df = pd.read_csv(uploaded_file)
+            else:
+                raw_df = pd.read_excel(uploaded_file)
+        except Exception as exc:
+            st.error(f"Failed to read uploaded file: {exc}")
+            st.stop()
     except Exception as exc:
         st.error(f"Unable to load the workbook: {exc}")
+        st.stop()
+
+    try:
+        df, resolved_columns, cleaning_metrics = clean_sales_data(raw_df)
+    except Exception as exc:
+        st.error(f"Data cleaning failed: {exc}")
         st.stop()
 
 
