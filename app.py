@@ -210,6 +210,41 @@ with st.spinner("Loading and cleaning sales data..."):
         st.error(f"Data cleaning failed: {exc}")
         st.stop()
 
+    # show upload / cleaning summary and provide cleaned data download
+    st.success("Dataset loaded and cleaned successfully.")
+    with st.expander("Raw dataset preview (first 10 rows)"):
+        st.dataframe(raw_df.head(10), use_container_width=True)
+
+    st.write("**Data cleaning summary**")
+    st.write(f"Rows before cleaning: {cleaning_metrics['rows_before']:,}")
+    st.write(f"Rows after cleaning: {cleaning_metrics['rows_after']:,}")
+    st.write(f"Duplicates removed: {cleaning_metrics['duplicates_removed']:,}")
+
+    # provide sample input template download for users
+    template_columns = [
+        "transaction_id",
+        "transaction_date",
+        "transaction_time",
+        "store_location",
+        "product_category",
+        "product_type",
+        "transaction_qty",
+        "unit_price",
+    ]
+    sample_row = {
+        "transaction_id": 1,
+        "transaction_date": "2024-01-01",
+        "transaction_time": "09:15:00",
+        "store_location": "Downtown",
+        "product_category": "Beverage",
+        "product_type": "Latte",
+        "transaction_qty": 2,
+        "unit_price": 3.5,
+    }
+    sample_df = pd.DataFrame([sample_row], columns=template_columns)
+    csv_sample = sample_df.to_csv(index=False).encode("utf-8")
+    st.download_button("Download sample input CSV", csv_sample, file_name="sample_input.csv", mime="text/csv")
+
 
 st.sidebar.header("Dashboard Filters")
 st.sidebar.caption("Use the controls below to focus the analysis.")

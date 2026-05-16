@@ -15,8 +15,8 @@ venv/
 Thumbs.db
 
 # Streamlit / data
-Coffee Shop Sales.xlsx
 *.xlsx
+!Coffee Shop Sales.xlsx
 *.csv
 
 # IDE

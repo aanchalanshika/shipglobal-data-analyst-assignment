@@ -106,6 +106,29 @@ Deploy the image to a container platform (Render, Azure App Service, Google Clou
 
 I can add a GitHub Actions workflow that builds the Docker image and pushes to a registry or triggers a Render/Azure deploy on merges to `main`.
 
+## Screenshots
+
+### Dashboard Overview
+![Dashboard Hero](assests/Screenshot%202026-05-16%20115453.png)
+
+### Data Upload & Raw Preview
+![Data Upload](assests/Screenshot%202026-05-16%20115502.png)
+
+### Cleaning Summary
+![Cleaning Summary](assests/Screenshot%202026-05-16%20115512.png)
+
+### KPI Cards
+![KPI Cards](assests/Screenshot%202026-05-16%20115519.png)
+
+### Daily Trend Analysis
+![Daily Trends](assests/Screenshot%202026-05-16%20115531.png)
+
+### Category & Store Analysis
+![Category & Store](assests/Screenshot%202026-05-16%20115538.png)
+
+### Hourly Heatmap & Insights
+![Hourly Heatmap](assests/Screenshot%202026-05-16%20115544.png)
+
 ## Troubleshooting
 
 - `ModuleNotFoundError: openpyxl` → ensure `openpyxl` is installed (already in `requirements.txt`).
