@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+venv/
+.env
+.venv/
+
+# Jupyter
+.ipynb_checkpoints
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit / data
+Coffee Shop Sales.xlsx
+*.xlsx
+*.csv
+
+# IDE
+.vscode/
+.idea/
+
+# Docker
+*.env
+
